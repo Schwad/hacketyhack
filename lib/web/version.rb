@@ -10,6 +10,8 @@ module Upgrade
       return unless root
 
       version_rel = root.at("//a[@rel='/rels/current-application-version']")
+      return unless version_rel && version_rel.respond_to?(:attributes) && version_rel.attributes
+
       HH::API.get(version_rel.attributes['href']) do |response|
         body = JSON.parse(response.body)
         blk[body]
