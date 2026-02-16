@@ -2,6 +2,11 @@
 # Runner script for Hackety Hack on Scarpe — SKIPS SPLASH
 # Pre-loads compatibility shims for dead dependencies
 
+# CRITICAL: Change to HH directory so HH::HOME = Dir.pwd works correctly
+# (HH's init.rb uses Dir.pwd for asset paths)
+hh_dir = File.expand_path(__dir__)
+Dir.chdir(hh_dir)
+
 # Load the hpricot shim and register it so `require 'hpricot'` is a no-op
 shim_path = File.expand_path('lib/compat/hpricot_shim.rb', __dir__)
 require shim_path
