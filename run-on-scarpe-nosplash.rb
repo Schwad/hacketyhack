@@ -22,6 +22,14 @@ end
 # Load app/boot.rb first so HH::PREFS is available
 require 'app/boot'
 
+# DEBUG: Verify paths are correct
+puts "=" * 50
+puts "DEBUG: HH::HOME   = #{HH::HOME}"
+puts "DEBUG: HH::STATIC = #{HH::STATIC}"
+test_icon = "#{HH::STATIC}/tab-home.png"
+puts "DEBUG: tab-home.png exists? #{File.exist?(test_icon)} at #{test_icon}"
+puts "=" * 50
+
 # SKIP SPLASH: Set the preference to skip the animated intro
 # This avoids the mask animation which has performance issues at 30fps
 HH::PREFS['skip_intro'] = true
